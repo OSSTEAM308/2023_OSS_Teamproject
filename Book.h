@@ -1,3 +1,5 @@
+#ifndef BOOK_H
+#define BOOK_H
 #include<stdio.h>
 
 typedef struct
@@ -16,3 +18,5 @@ void EditBook(Book * data_book);
 void SearchBook(Book * data_book);
 void LoanBook(Book * data_book);
 void ReturnBook(Book * data_book);
+
+#endif
