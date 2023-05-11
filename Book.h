@@ -11,6 +11,9 @@ typedef struct
     char publisher[100];
 }Book;
 
+int idx;
+int data_num,no;
+
 void DisplayBook(Book ** data_book);
 void AddBook(Book ** data_book);
 void DeleteBook(Book ** data_book);
