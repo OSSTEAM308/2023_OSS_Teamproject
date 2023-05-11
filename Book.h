@@ -9,6 +9,7 @@ typedef struct
     char author[100];
     char end_date[100];
     char publisher[100];
+    int status;
 }Book;
 
 int idx;
