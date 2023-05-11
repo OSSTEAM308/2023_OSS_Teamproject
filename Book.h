@@ -5,7 +5,7 @@
 typedef struct
 {
     unsigned int no;
-    char book_name[100];
+    char book_title[100];
     char author[100];
     char end_date[100];
     char publisher[100];

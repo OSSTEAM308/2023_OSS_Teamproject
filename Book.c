@@ -3,8 +3,8 @@
 
 
 void DisplayBook(Book ** book_data)
-{
-    printf("번호  이름      핸드폰번호  관계    년생\n");
+{  
+    printf("no    Title    author     publisher     end_date\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
     if(data_num == 0)
@@ -13,9 +13,9 @@ void DisplayBook(Book ** book_data)
     {
         for(int i=0;i<=idx;i++)
         {
-            if(phone[i]->status != -1)
+            if(book_data[i]->status != -1)
             {
-                printf("%d    %s       %s  %s  %s\n",phone[i]->num, phone[i]->name, phone[i]->phoneNum, phone[i]->relationship, phone[i]->birth);
+                printf("%d    %s       %s  %s  %s\n",book_data[i]->no, book_data[i]->book_title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
                 flag++;
             }           
         }
