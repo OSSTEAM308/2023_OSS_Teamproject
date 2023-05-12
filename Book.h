@@ -2,18 +2,18 @@
 #define BOOK_H
 #include<stdio.h>
 
-#define LEN_TITLE
-#define LEN_AUTHOR
-#define LEN_DATES
-#define LEN_PUBLISHER
+#define LEN_TITLE 100
+#define LEN_AUTHOR 100
+#define LEN_DATES 100
+#define LEN_PUBLISHER 100
 
 typedef struct
 {
     unsigned int no;
-    char title[100];
-    char author[100];
-    char end_date[100];
-    char publisher[100];
+    char title[LEN_TITLE];
+    char author[LEN_AUTHOR];
+    char end_date[LEN_DATES];
+    char publisher[LEN_PUBLISHER];
     int status;
 }Book;
 
