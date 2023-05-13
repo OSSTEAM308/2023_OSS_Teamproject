@@ -38,7 +38,7 @@ void AddBook(Book ** book_data)
     book_data[idx]->author[strlen(book_data[idx]->author) - 1] = '\0';
 
     printf("Publisher : ");
-    fgets(book_data[idx]->, LEN_PUBLISHER, stdin);
+    fgets(book_data[idx]->publisher, LEN_PUBLISHER, stdin);
     book_data[idx]->publisher[strlen(book_data[idx]->publisher) - 1] = '\0';
 
     printf("Publisher : ");
@@ -99,3 +99,25 @@ void SearchBook(Book **book_data)
     if(flag ==0)
         printf("No Data\n");
 }
+
+int ModifyBook(Book ** book_data)
+{
+    DisplayBook(book_data);
+
+    int num,flag=0;
+    printf("\n No? (cancel : 0) ");
+    scanf("%d",&num);
+
+    for (int i = 0; i <= idx; i++)
+    {
+        if(book_data[i]->no == num && book_data[i]->status != -1)
+        {
+            flag++;
+            data_num--;
+            (fun)
+        }
+    }
+    if(flag == 0)
+     printf("해당번호는 없는 번호입니다.\n");
+}      
+
