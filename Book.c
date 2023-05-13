@@ -121,3 +121,12 @@ int ModifyBook(Book ** book_data)
      printf("해당번호는 없는 번호입니다.\n");
 }      
 
+void LoanBook(Book ** data_book)
+{
+
+}
+
+void ReturnBook(Book ** data_book)
+{
+    
+}
