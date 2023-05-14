@@ -75,7 +75,7 @@ int main()
             SearchMember();
             break;
         case 12:
-            printf("Exiting program... Thank you for using the library management system.\n");
+            printf("Thank you for using the library management system.\n");
             exit(0);
         default:
             printf("Invalid choice. Please enter a number between 1 and 12.\n");
