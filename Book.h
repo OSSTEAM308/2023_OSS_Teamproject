@@ -1,5 +1,6 @@
 #ifndef BOOK_H
 #define BOOK_H
+
 #include<stdio.h>
 
 #define LEN_TITLE 100
@@ -17,8 +18,7 @@ typedef struct
     int status;
 }Book;
 
-int idx;
-int data_num,no;
+int idx, no;
 
 void DisplayBook(Book ** data_book);
 void AddBook(Book ** data_book);
