@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<time.h>
 #include"Book.h"
 
 void DisplayBook(Book ** book_data)
@@ -29,26 +30,7 @@ void AddBook(Book ** book_data)
     book_data[idx] = (Book *)malloc(sizeof(Book));
     getchar();
 
-    printf("Title : ");
-    fgets(book_data[idx]->title, LEN_TITLE, stdin);
-    book_data[idx]->title[strlen(book_data[idx]->title) - 1] = '\0';
-
-    printf("Author : ");
-    fgets(book_data[idx]->author, LEN_AUTHOR, stdin);
-    book_data[idx]->author[strlen(book_data[idx]->author) - 1] = '\0';
-
-    printf("Publisher : ");
-    fgets(book_data[idx]->publisher, LEN_PUBLISHER, stdin);
-    book_data[idx]->publisher[strlen(book_data[idx]->publisher) - 1] = '\0';
-
-    printf("Publisher : ");
-    fgets(book_data[idx]->publisher, LEN_PUBLISHER, stdin);
-    book_data[idx]->publisher[strlen(book_data[idx]->publisher) - 1] = '\0';
-
-    printf("End_date : ");
-    fgets(book_data[idx]->end_date, LEN_DATES, stdin);
-    book_data[idx]->end_date[strlen(book_data[idx]->end_date) - 1] = '\0';
-
+    InputBook(book_data,idx);
     book_data[idx]->no = no++;
 }
 
@@ -68,12 +50,12 @@ void DeleteBook(Book **book_data)
             flag++;
             book_data[i]->status = -1;
             data_num--;
-            printf("삭제완료\n");
+            printf("Delete\n");
         }
     }
 
     if(flag ==0)
-        printf("없는 번호\n");
+        printf("No data\n");
 }
 
 void SearchBook(Book **book_data)
@@ -97,7 +79,7 @@ void SearchBook(Book **book_data)
     }
 
     if(flag ==0)
-        printf("No Data\n");
+        printf("No data\n");
 }
 
 int ModifyBook(Book ** book_data)
@@ -114,16 +96,62 @@ int ModifyBook(Book ** book_data)
         {
             flag++;
             data_num--;
-            (fun)
+            InputBook(book_data, i);
+            break;
         }
     }
     if(flag == 0)
-     printf("해당번호는 없는 번호입니다.\n");
+     printf("No data\n");
 }      
 
-void LoanBook(Book ** data_book)
+void InputBook(Book ** book_data,int index)
 {
+    printf("Title : ");
+    fgets(book_data[index]->title, LEN_TITLE, stdin);
+    book_data[index]->title[strlen(book_data[index]->title) - 1] = '\0';
 
+    printf("Author : ");
+    fgets(book_data[index]->author, LEN_AUTHOR, stdin);
+    book_data[index]->author[strlen(book_data[index]->author) - 1] = '\0';
+
+    printf("Publisher : ");
+    fgets(book_data[index]->publisher, LEN_PUBLISHER, stdin);
+    book_data[index]->publisher[strlen(book_data[index]->publisher) - 1] = '\0';
+
+    printf("Publisher : ");
+    fgets(book_data[index]->publisher, LEN_PUBLISHER, stdin);
+    book_data[index]->publisher[strlen(book_data[index]->publisher) - 1] = '\0';
+
+    printf("End_date : ");
+    fgets(book_data[index]->end_date, LEN_DATES, stdin);
+    book_data[index]->end_date[strlen(book_data[index]->end_date) - 1] = '\0';
+}
+
+
+
+void LoanBook(Book **data_book) {
+    char book_name[LEN_TITLE];
+    printf("Enter the book name: ");
+    getchar();
+    fgets(book_name, LEN_TITLE, stdin);
+    book_name[strlen(book_name) - 1] = '\0';
+
+    int flag = 0;
+    for (int i = 0; i <= idx; i++) {
+        if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
+            flag = 1;
+            time_t now = time(NULL);
+            struct tm *t = localtime(&now);
+            t->tm_mday += 7;
+            mktime(t);
+            strftime(data_book[i]->end_date, LEN_DATES, "%Y-%m-%d", t);
+            printf("Book \"%s\" has been successfully borrowed. Return date: %s\n", book_name, data_book[i]->end_date);
+            break;
+        }
+    }
+
+    if (flag == 0)
+        printf("Book \"%s\" is not available for borrowing.\n", book_name);
 }
 
 void ReturnBook(Book ** data_book)
