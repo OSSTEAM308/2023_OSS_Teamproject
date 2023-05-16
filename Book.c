@@ -154,7 +154,23 @@ void LoanBook(Book **data_book) {
         printf("Book \"%s\" is not available for borrowing.\n", book_name);
 }
 
-void ReturnBook(Book ** data_book)
-{
-    
+void ReturnBook(Book **data_book) {
+    char book_name[LEN_TITLE];
+    printf("Enter the book name to return: ");
+    getchar();
+    fgets(book_name, LEN_TITLE, stdin);
+    book_name[strlen(book_name) - 1] = '\0';
+
+    int flag = 0;
+    for (int i = 0; i <= idx; i++) {
+        if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
+            flag = 1;
+            data_book[i]->end_date[0] = '\0';  // Clear the end_date
+            printf("Book \"%s\" has been successfully returned.\n", book_name);
+            break;
+        }
+    }
+
+    if (flag == 0)
+        printf("Invalid input or book \"%s\" is not available for return.\n", book_name);
 }
