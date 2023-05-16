@@ -1,4 +1,4 @@
-#include <stdio.h>
+// 2023.05.16 
 #include <stdlib.h>
 
 // 책 관련 함수 선언
