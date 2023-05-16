@@ -28,6 +28,6 @@ void EditBook(Book ** data_book);
 void SearchBook(Book ** data_book);
 void LoanBook(Book ** data_book);
 void ReturnBook(Book ** data_book);
-void InputBook(Book ** data_book,int index)
+void InputBook(Book **data_book, int index);
 
 #endif
