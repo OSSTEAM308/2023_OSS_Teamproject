@@ -24,7 +24,7 @@ int idx, no;
 void DisplayBook(Book ** data_book);
 void AddBook(Book ** data_book);
 void DeleteBook(Book ** data_book);
-void EditBook(Book ** data_book);
+void ModifyBookBook(Book ** data_book);
 void SearchBook(Book ** data_book);
 void LoanBook(Book ** data_book);
 void ReturnBook(Book ** data_book);
