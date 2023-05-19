@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-// Book funtions
+// Book functions
 void DisplayBook();
 void AddBook();
 void DeleteBook();
