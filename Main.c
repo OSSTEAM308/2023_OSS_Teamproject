@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-// 책 관련 함수 선언
+// Book funtions
 void DisplayBook();
 void AddBook();
 void DeleteBook();
@@ -9,7 +9,7 @@ void SearchBook();
 void LoanBook();
 void ReturnBook();
 
-// 회원 관련 함수 선언
+// Member functions
 void DisplayMember();
 void AddMember();
 void DeleteMember();
