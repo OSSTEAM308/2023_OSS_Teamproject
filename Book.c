@@ -74,7 +74,7 @@ void SearchBook(Book **book_data)
         if(strstr(book_data[i]->title,temp) && book_data[i]->status != -1)
         {
             flag++;
-            printf("%d    %s       %s  %s  %s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
+            printf("%6d%9s%10s%14s%s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
         }
     }
 
