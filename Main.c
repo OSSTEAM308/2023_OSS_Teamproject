@@ -1,23 +1,13 @@
+#include<stdio.h>
 #include <stdlib.h>
+#include"Book.h"
 
-// Book functions
-void DisplayBook();
-void AddBook();
-void DeleteBook();
-void EditBook();
-void SearchBook();
-void LoanBook();
-void ReturnBook();
-
-// Member functions
-void DisplayMember();
-void AddMember();
-void DeleteMember();
-void SearchMember();
+#define MAX_BOOKDATA 100
 
 int main() 
 {
     int choice;
+    Book *book_data[MAX_BOOKDATA];
 
     while (1) 
     {
@@ -38,30 +28,30 @@ int main()
 
         scanf("%d", &choice);
 
-        switch (choice) 
+    switch (choice) 
 	{
         case 1:
-            DisplayBook();
+            DisplayBook(book_data);
             break;
         case 2:
-            AddBook();
+            AddBook(book_data);
             break;
         case 3:
-            DeleteBook();
+            DeleteBook(book_data);
             break;
         case 4:
-            EditBook();
+            ModifyBook(book_data);
             break;
         case 5:
-            SearchBook();
+            SearchBook(book_data);
             break;
         case 6:
-            LoanBook();
+            LoanBook(book_data);
             break;
         case 7:
-            ReturnBook();
+            ReturnBook(book_data);
             break;
-        case 8:
+      /*  case 8:
             DisplayMember();
             break;
         case 9:
@@ -72,7 +62,7 @@ int main()
             break;
         case 11:
             SearchMember();
-            break;
+            break; */
         case 12:
             printf("Thank you for using the library management system.\n");
             exit(0);
@@ -80,7 +70,6 @@ int main()
             printf("Invalid choice. Please enter a number between 1 and 12.\n");
         }
     }
-
     return 0;
 }
 
