@@ -7,6 +7,8 @@ typedef struct {
     char Loan[100];
 } Member;
 
+int num_members = 0;
+
 void AddMember(Member **data_member);
 void SearchMember(Member **data_member);
 void DeleteMember(Member **data_member);
