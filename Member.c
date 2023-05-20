@@ -86,3 +86,18 @@ void DisplayMember(Member **data_member) {
     
     printf("-------------------------------\n");
 }
+
+void SaveMemberdata(Member **data_member) {
+    FILE *file = fopen("memberdata.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file.\n");
+        return;
+    }
+    
+    for (int i = 0; i < num_members; i++) {
+        fprintf(file, "%s,%u,%s\n", (*data_member)->name, (*data_member)->age, (*data_member)->Loan);
+    }
+    
+    fclose(file);
+    printf("Member data saved successfully.\n");
+}
