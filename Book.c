@@ -1,5 +1,7 @@
 #include<stdio.h>
+#include <stdlib.h>
 #include<time.h>
+#include<string.h>
 #include"Book.h"
 
 void DisplayBook(Book ** book_data)
@@ -82,7 +84,7 @@ void SearchBook(Book **book_data)
         printf("No data\n");
 }
 
-int ModifyBook(Book ** book_data)
+void ModifyBook(Book ** book_data)
 {
     DisplayBook(book_data);
 
