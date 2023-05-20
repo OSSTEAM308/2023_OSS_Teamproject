@@ -18,6 +18,7 @@ typedef struct
     int status;
 }Book;
 
+
 int data_num;
 int idx, no;
 
