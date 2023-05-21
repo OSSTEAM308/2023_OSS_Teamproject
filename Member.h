@@ -11,7 +11,8 @@ int num_members = 0;
 
 void AddMember(Member **data_member);
 void SearchMember(Member **data_member);
-void DeleteMember(Member **data_member);
+void DeleteMember(Member **data_member);S
 void DisplayMember(Member **data_member);
+void SaveBookdata(Member **data_member)
 
 #endif
