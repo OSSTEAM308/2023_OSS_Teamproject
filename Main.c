@@ -56,7 +56,7 @@ int main()
                 SearchBook(book_data);
                 break;
             case 6:
-                LoanBook(book_data);
+                LoanBook(book_data,member_data);
                 break;
             case 7:
                 ReturnBook(book_data);
