@@ -7,6 +7,7 @@
 #define LEN_AUTHOR 100
 #define LEN_DATES 100
 #define LEN_PUBLISHER 100
+#define BOOK_FILENAME "Book.txt"
 
 typedef struct
 {
@@ -31,6 +32,5 @@ void LoanBook(Book ** data_book);
 void ReturnBook(Book ** data_book);
 void InputBook(Book **data_book, int index);
 void SaveBook(Book **data_book);
-void ExtensionBook(Book **data_book);
 
 #endif
