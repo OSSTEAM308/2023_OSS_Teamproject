@@ -119,14 +119,6 @@ void InputBook(Book ** book_data,int index)
     printf("Publisher : ");
     fgets(book_data[index]->publisher, LEN_PUBLISHER, stdin);
     book_data[index]->publisher[strlen(book_data[index]->publisher) - 1] = '\0';
-
-    printf("Publisher : ");
-    fgets(book_data[index]->publisher, LEN_PUBLISHER, stdin);
-    book_data[index]->publisher[strlen(book_data[index]->publisher) - 1] = '\0';
-
-    printf("End_date : ");
-    fgets(book_data[index]->end_date, LEN_DATES, stdin);
-    book_data[index]->end_date[strlen(book_data[index]->end_date) - 1] = '\0';
 }
 
 

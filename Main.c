@@ -52,7 +52,7 @@ int main() {
             case 7:
                 ReturnBook(book_data);
                 break;
-            case 8:
+            /*case 8:
                 SaveBookdata(book_data);
                 break;
             case 9:
@@ -69,7 +69,7 @@ int main() {
                 break;
             case 13:
                 SaveMemberdata(&member_data);
-                break;
+                break;*/
             case 14:
                 printf("Thank you for using the library management system.\n");
                 exit(0);
