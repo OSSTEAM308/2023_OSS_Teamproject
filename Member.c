@@ -11,6 +11,7 @@ void AddMember(Member **data_member) {
         return;
     }
     
+    getchar();
     Member *new_member = (Member *)malloc(sizeof(Member));
     
     printf("Enter member name: ");
@@ -21,9 +22,9 @@ void AddMember(Member **data_member) {
     scanf("%u", &(new_member->age));
     getchar(); // Consume newline character
     
-    *data_member = new_member;
+    data_member[num_members] = new_member;
     num_members++;
-    
+
     printf("Member added successfully!\n");
 }
 
@@ -36,7 +37,7 @@ void SearchMember(Member **data_member) {
     
     int found = 0;
     for (int i = 0; i < num_members; i++) {
-        if (strcmp((*data_member)->name, search_name) == 0) {
+        if (strcmp((data_member[i])->name, search_name) == 0 && data_member[i]->status != -1) {
             printf("Member found:\n");
             printf("Name: %s\n", (*data_member)->name);
             printf("Age: %u\n", (*data_member)->age);
@@ -52,18 +53,17 @@ void SearchMember(Member **data_member) {
 
 void DeleteMember(Member **data_member) {
     char delete_name[100];
-    
+    getchar();
+
     printf("Enter member name to delete: ");
     fgets(delete_name, sizeof(delete_name), stdin);
     delete_name[strcspn(delete_name, "\n")] = '\0';
     
     int found = 0;
     for (int i = 0; i < num_members; i++) {
-        if (strcmp((*data_member)->name, delete_name) == 0) {
-            free(*data_member);
-            *data_member = NULL;
+        if (strcmp((data_member[i])->name, delete_name) == 0) {
+            data_member[i]->status = -1;
             found = 1;
-            num_members--;
             printf("Member deleted successfully.\n");
             break;
         }
@@ -81,14 +81,15 @@ void DisplayMember(Member **data_member) {
     printf("-------------------------------\n");
     
     for (int i = 0; i < num_members; i++) {
-        printf("%s\t\t%u\n", (*data_member)->name, (*data_member)->age);
+        if(data_member[i]->status != -1)
+            printf("%s\t\t%u\n", data_member[i]->name, data_member[i]->age);
     }
     
     printf("-------------------------------\n");
 }
 
-void SaveMemberdata(Member **data_member) {
-    FILE *file = fopen("memberdata.txt", "w");
+void SaveMemberData(Member **data_member) {
+    FILE *file = fopen(MEMBER_FILENAME, "w");
     if (file == NULL) {
         printf("Error opening file.\n");
         return;
