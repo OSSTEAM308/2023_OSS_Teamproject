@@ -4,6 +4,8 @@
 #include<string.h>
 #include"Book.h"
 
+#define FILE_NAME Book.txt
+
 
 void DisplayBook(Book ** book_data)
 {  
@@ -182,4 +184,31 @@ void ReturnBook(Book **data_book) {
 
     if (flag == 0)
         printf("Invalid input or book \"%s\" is not available for return.\n", book_name);
+}
+
+
+void SaveBook(Book **data_book)
+{
+    FILE *file = fopen("Book.txt", "w");
+    if (file == NULL)
+    {
+        printf("Error opening file.\n");
+        return;
+    }
+
+    for (int i = 0; i < idx; i++)
+    {
+        if (data_book[i]->status != -1)
+        {
+            fprintf(file, "%d\n", data_book[i]->no);
+            fprintf(file, "%s\n", data_book[i]->title);
+            fprintf(file, "%s\n", data_book[i]->author);
+            fprintf(file, "%s\n", data_book[i]->end_date);
+            fprintf(file, "%s\n", data_book[i]->publisher);
+            fprintf(file, "%d\n", data_book[i]->status);
+        }
+    }
+
+    fclose(file);
+    printf("Data saved successfully.\n");
 }

@@ -30,5 +30,6 @@ void SearchBook(Book ** data_book);
 void LoanBook(Book ** data_book);
 void ReturnBook(Book ** data_book);
 void InputBook(Book **data_book, int index);
+void SaveBook(Book **data_book);
 
 #endif
