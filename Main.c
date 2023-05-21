@@ -23,7 +23,8 @@ int main() {
         printf("9. Add a member\n");
         printf("10. Delete a member\n");
         printf("11. Search a member\n");
-        printf("12. Exit\n");
+        printf("12. Search a member\n");
+        printf("13. Exit\n");
         printf("Enter your choice (1-12): ");
 
         scanf("%d", &choice);
@@ -64,6 +65,8 @@ int main() {
                 break;
             case 12:
                 SaveMemberdata(&member_data);
+                break;
+            case 13:
                 printf("Thank you for using the library management system.\n");
                 exit(0);
             default:
