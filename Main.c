@@ -1,17 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Book.h"
 #include "Member.h"
+#include "Book.h"
 
-#define MAX_BOOKDATA 100
 #define MAX_MEMBERDATA 100
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "Member.h"
-#include "Book.h"
-
-#define MAX_MEMBERS 100
 #define MAX_BOOKDATA 100
 
 void loaddata(Member **data_member, Book **book_data) {
@@ -22,7 +14,7 @@ void loaddata(Member **data_member, Book **book_data) {
     }
 
     int num_members = 0;
-    while (!feof(member_file) && num_members < MAX_MEMBERS) {
+    while (!feof(member_file) && num_members < MAX_MEMBERDATA) {
         Member *new_member = (Member *)malloc(sizeof(Member));
         if (fscanf(member_file, "%[^,],%u\n", new_member->name, &(new_member->age)) == 2) {
             data_member[num_members] = new_member;
@@ -120,7 +112,7 @@ int main()
                 ReturnBook(book_data);
                 break;
             case 8:
-                SaveBookdata(book_data);
+                SaveBook(book_data);
                 break;
             case 9:
                 DisplayMember(member_data);
