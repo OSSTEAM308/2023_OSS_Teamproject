@@ -19,12 +19,13 @@ int main() {
         printf("5. Search a book\n");
         printf("6. Loan a book\n");
         printf("7. Return a book\n");
-        printf("8. Display member list\n");
-        printf("9. Add a member\n");
-        printf("10. Delete a member\n");
-        printf("11. Search a member\n");
+        printf("8. Savedata book\n");
+        printf("9. Display member list\n");
+        printf("10. Add a member\n");
+        printf("11. Delete a member\n");
         printf("12. Search a member\n");
-        printf("13. Exit\n");
+        printf("13. Savedata member\n");
+        printf("14. Exit\n");
         printf("Enter your choice (1-12): ");
 
         scanf("%d", &choice);
@@ -52,21 +53,24 @@ int main() {
                 ReturnBook(book_data);
                 break;
             case 8:
-                DisplayMember(&member_data);
+                SaveBookdata(book_data);
                 break;
             case 9:
-                AddMember(&member_data);
+                DisplayMember(&member_data);
                 break;
             case 10:
-                DeleteMember(&member_data);
+                AddMember(&member_data);
                 break;
             case 11:
-                SearchMember(&member_data);
+                DeleteMember(&member_data);
                 break;
             case 12:
-                SaveMemberdata(&member_data);
+                SearchMember(&member_data);
                 break;
             case 13:
+                SaveMemberdata(&member_data);
+                break;
+            case 14:
                 printf("Thank you for using the library management system.\n");
                 exit(0);
             default:
