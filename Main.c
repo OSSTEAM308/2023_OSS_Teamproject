@@ -59,7 +59,7 @@ int main() {
             case 7:
                 ReturnBook(book_data);
                 break;
-            /*case 8:
+            case 8:
                 SaveBookdata(book_data);
                 break;
             case 9:
@@ -76,7 +76,7 @@ int main() {
                 break;
             case 13:
                 SaveMemberdata(&member_data);
-                break;*/
+                break;
             default:
                 printf("Invalid choice. Please enter a number between 1 and 12.\n");
                 break;
