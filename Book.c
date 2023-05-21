@@ -6,18 +6,18 @@
 
 void DisplayBook(Book ** book_data)
 {  
-    printf("no    Title    author     publisher     end_date\n");
+    printf("no    Title        author     publisher     end_date\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
     if(data_num == 0)
             printf("no Data\n");
     else
     {
-        for(int i=0;i<=idx;i++)
+        for(int i=0;i<=idx-1;i++)
         {
             if(book_data[i]->status != -1)
             {
-                printf("%6d%9s%10s%14s%s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
+                printf("%-6d%-13s%-11s%-14s%s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
                 flag++;
             }           
         }
@@ -27,13 +27,13 @@ void DisplayBook(Book ** book_data)
  
 void AddBook(Book ** book_data)
 {
-    idx++;
-    data_num++;
     book_data[idx] = (Book *)malloc(sizeof(Book));
     getchar();
 
     InputBook(book_data,idx);
     book_data[idx]->no = no++;
+    idx++;
+    data_num++;
 }
 
 void DeleteBook(Book **book_data)
@@ -45,7 +45,7 @@ void DeleteBook(Book **book_data)
     printf("\nDelete No -> ");
     scanf("%d", &num);
 
-    for (int i = 0; i <= idx;i++)
+    for (int i = 0; i <= idx-1;i++)
     {
         if(book_data[i]->no == num && book_data[i]->status != -1)
         {
@@ -68,15 +68,15 @@ void SearchBook(Book **book_data)
     fgets(temp,sizeof(temp), stdin);
     temp[strlen(temp) - 1] = '\0';
    
-    printf("no    Title    author     publisher     end_date\n");
+    printf("no    Title        author     publisher     end_date\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
-    for (int i = 0; i <= idx;i++)
+    for (int i = 0; i <= idx-1;i++)
     {
         if(strstr(book_data[i]->title,temp) && book_data[i]->status != -1)
         {
             flag++;
-            printf("%6d%9s%10s%14s%s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
+            printf("%-6d%-13s%-11s%-14s%s\n",book_data[i]->no, book_data[i]->title, book_data[i]->author, book_data[i]->publisher, book_data[i]->end_date);
         }
     }
 
@@ -92,7 +92,7 @@ void ModifyBook(Book ** book_data)
     printf("\n No? (cancel : 0) ");
     scanf("%d",&num);
 
-    for (int i = 0; i <= idx; i++)
+    for (int i = 0; i <= idx-1; i++)
     {
         if(book_data[i]->no == num && book_data[i]->status != -1)
         {
@@ -131,7 +131,7 @@ void LoanBook(Book **data_book) {
     book_name[strlen(book_name) - 1] = '\0';
 
     int flag = 0;
-    for (int i = 0; i <= idx; i++) {
+    for (int i = 0; i <= idx-1; i++) {
         if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
             flag = 1;
             time_t now = time(NULL);
@@ -156,7 +156,7 @@ void ReturnBook(Book **data_book) {
     book_name[strlen(book_name) - 1] = '\0';
 
     int flag = 0;
-    for (int i = 0; i <= idx; i++) {
+    for (int i = 0; i <= idx-1; i++) {
         if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
             flag = 1;
             data_book[i]->end_date[0] = '\0';  // Clear the end_date
