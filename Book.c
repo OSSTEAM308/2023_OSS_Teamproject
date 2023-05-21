@@ -4,6 +4,7 @@
 #include<string.h>
 #include"Book.h"
 
+
 void DisplayBook(Book ** book_data)
 {  
     printf("no    Title        author     publisher     end_date\n");
@@ -31,7 +32,7 @@ void AddBook(Book ** book_data)
     getchar();
 
     InputBook(book_data,idx);
-    book_data[idx]->no = no++;
+    book_data[idx]->no = ++no;
     idx++;
     data_num++;
 }
@@ -42,8 +43,14 @@ void DeleteBook(Book **book_data)
 
     int num,flag=0;
 
-    printf("\nDelete No -> ");
+    printf("\nDelete No (cancel 0)-> ");
     scanf("%d", &num);
+
+    if(num == 0)
+    {
+        printf("Cancel\n");
+        return;
+    }
 
     for (int i = 0; i <= idx-1;i++)
     {
@@ -91,6 +98,13 @@ void ModifyBook(Book ** book_data)
     int num,flag=0;
     printf("\n No? (cancel : 0) ");
     scanf("%d",&num);
+    getchar();
+
+    if(num == 0)
+    {
+        printf("Cancel\n");
+        return;
+    }
 
     for (int i = 0; i <= idx-1; i++)
     {
@@ -157,7 +171,8 @@ void ReturnBook(Book **data_book) {
 
     int flag = 0;
     for (int i = 0; i <= idx-1; i++) {
-        if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
+        if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1 && strlen(data_book[i]->end_date) > 2) 
+        {
             flag = 1;
             data_book[i]->end_date[0] = '\0';  // Clear the end_date
             printf("Book \"%s\" has been successfully returned.\n", book_name);
