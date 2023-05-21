@@ -6,7 +6,6 @@
 
 #define FILE_NAME Book.txt
 
-
 void DisplayBook(Book ** book_data)
 {  
     printf("no    Title        author     publisher     end_date\n");
@@ -211,4 +210,32 @@ void SaveBook(Book **data_book)
 
     fclose(file);
     printf("Data saved successfully.\n");
+}
+
+void ExtensionBook(Book **data_book)
+{
+    char book_name[LEN_TITLE];
+    printf("Enter the book name to extend the due date: ");
+    getchar();
+    fgets(book_name, LEN_TITLE, stdin);
+    book_name[strlen(book_name) - 1] = '\0';
+
+    int flag = 0;
+    for (int i = 0; i <= idx-1; i++) {
+        if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1 && strlen(data_book[i]->end_date) > 2) 
+        {
+            flag = 1;
+            struct tm t;
+            strptime(data_book[i]->end_date, "%Y-%m-%d", &t);
+            time_t end_date = mktime(&t);
+            end_date += 7 * 24 * 60 * 60;  // Adding 7 days (7 * 24 hours * 60 minutes * 60 seconds)
+            t = *localtime(&end_date);
+            strftime(data_book[i]->end_date, LEN_DATES, "%Y-%m-%d", &t);
+            printf("The due date for book \"%s\" has been successfully extended. New due date: %s\n", book_name, data_book[i]->end_date);
+            break;
+        }
+    }
+
+    if (flag == 0)
+        printf("Invalid input or book \"%s\" is not available for extending the due date.\n", book_name);
 }
