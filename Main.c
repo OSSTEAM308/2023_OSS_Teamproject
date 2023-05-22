@@ -21,24 +21,24 @@ int main()
         no = book_data[idx - 1]->no;
 
     while (1) {
-        printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
-        printf("¦¢         Library Management System       ¦¢\n");
-        printf("¦§¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦©\n");
-        printf("¦¢ 0. Exit                                 ¦¢\n");
-        printf("¦¢ 1. Display book list                    ¦¢\n");
-        printf("¦¢ 2. Add a book                           ¦¢\n");
-        printf("¦¢ 3. Delete a book                        ¦¢\n");
-        printf("¦¢ 4. Edit a book                          ¦¢\n");
-        printf("¦¢ 5. Search a book                        ¦¢\n");
-        printf("¦¢ 6. Loan a book                          ¦¢\n");
-        printf("¦¢ 7. Return a book                        ¦¢\n");
-        printf("¦¢ 8. Save book                            ¦¢\n");
-        printf("¦¢ 9. Display member list                  ¦¢\n");
-        printf("¦¢ 10. Add a member                        ¦¢\n");
-        printf("¦¢ 11. Delete a member                     ¦¢\n");
-        printf("¦¢ 12. Search a member                     ¦¢\n");
-        printf("¦¢ 13. Save member                         ¦¢\n");
-        printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n");
+        printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”\n");
+        printf("â”‚         Library Management System       â”‚\n");
+        printf("â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤\n");
+        printf("â”‚ 0. Exit                                 â”‚\n");
+        printf("â”‚ 1. Display book list                    â”‚\n");
+        printf("â”‚ 2. Add a book                           â”‚\n");
+        printf("â”‚ 3. Delete a book                        â”‚\n");
+        printf("â”‚ 4. Edit a book                          â”‚\n");
+        printf("â”‚ 5. Search a book                        â”‚\n");
+        printf("â”‚ 6. Loan a book                          â”‚\n");
+        printf("â”‚ 7. Return a book                        â”‚\n");
+        printf("â”‚ 8. Save book                            â”‚\n");
+        printf("â”‚ 9. Display member list                  â”‚\n");
+        printf("â”‚ 10. Add a member                        â”‚\n");
+        printf("â”‚ 11. Delete a member                     â”‚\n");
+        printf("â”‚ 12. Search a member                     â”‚\n");
+        printf("â”‚ 13. Save member                         â”‚\n");
+        printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜\n");
         printf("\n");
         printf("Enter your choice (0-13): ");
 
