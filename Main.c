@@ -59,7 +59,7 @@ int main()
                 LoanBook(book_data,member_data);
                 break;
             case 7:
-                ReturnBook(book_data);
+                ReturnBook(book_data,member_data);
                 break;
             case 8:
                 SaveBook(book_data);

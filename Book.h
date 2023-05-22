@@ -32,7 +32,7 @@ void DeleteBook(Book ** data_book);
 void ModifyBook(Book ** data_book);
 void SearchBook(Book ** data_book);
 void LoanBook(Book ** ,Member ** member_data);
-void ReturnBook(Book ** data_book);
+void ReturnBook(Book ** data_book,Member **member_data);
 void InputBook(Book **data_book, int index);
 void SaveBook(Book **data_book);
 

@@ -76,16 +76,16 @@ void DeleteMember(Member **data_member) {
 
 void DisplayMember(Member **data_member) {
     printf("Member List:\n");
-    printf("-------------------------------\n");
-    printf("Name\t\tAge\n");
-    printf("-------------------------------\n");
+    printf("--------------------------------------------------------------\n");
+    printf("Name\t\tAge\t\tbooks on loan\n");
+    printf("--------------------------------------------------------------\n");
     
     for (int i = 0; i < num_members; i++) {
         if(data_member[i]->status != -1)
-            printf("%s\t\t%u\n", data_member[i]->name, data_member[i]->age);
+            printf("%s\t\t%u\t\t%s\n", data_member[i]->name, data_member[i]->age,data_member[i]->Loan);
     }
     
-    printf("-------------------------------\n");
+    printf("--------------------------------------------------------------\n");
 }
 
 void SaveMemberData(Member **data_member) {

@@ -101,7 +101,7 @@ void ModifyBook(Book ** book_data)
     scanf("%d",&num);
     getchar();
     strcpy(book_data[idx]->name, "");
-    
+
     if(num == 0)
     {
         printf("Cancel\n");
@@ -144,11 +144,18 @@ void LoanBook(Book **data_book,Member **member_data) {
     fgets(book_name, LEN_TITLE, stdin);
     book_name[strlen(book_name) - 1] = '\0';
 
+    
     int flag = 0;
     int member_idx = -1;  // Index of the member in member_data array
     for (int i = 0; i <= idx-1; i++) {
         if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
             flag = 1;
+
+            if((strlen(data_book[i]->end_date) > 0))
+            {
+                printf("Book already Loan\n");
+                return;
+            }
             
             char member_name[100];
             printf("Enter the name of the borrowing user: ");
@@ -167,6 +174,8 @@ void LoanBook(Book **data_book,Member **member_data) {
                 printf("Member \"%s\" does not exist. Unable to borrow the book.\n", member_name);
                 return;  // Exit the function
             }
+
+            strcpy(member_data[member_idx]->Loan,data_book[i]->title);
             
             // Update the book information with member's name
             strcpy(data_book[i]->name, member_data[member_idx]->name);
@@ -185,7 +194,7 @@ void LoanBook(Book **data_book,Member **member_data) {
         printf("Book \"%s\" is not available for borrowing.\n", book_name);
 }
 
-void ReturnBook(Book **data_book) {
+void ReturnBook(Book **data_book,Member **member_data) {
     char book_name[LEN_TITLE];
     printf("Enter the book name to return: ");
     getchar();
@@ -199,6 +208,12 @@ void ReturnBook(Book **data_book) {
             flag = 1;
             data_book[i]->end_date[0] = '\0';  // Clear the end_date
             data_book[i]->name[0] = '\0';
+             for (int j = 0; j < num_members; j++) {
+                if (strcmp(member_data[j]->Loan, book_name) == 0) {
+                    member_data[j]->Loan[0] = '\0';
+                    break;
+                }
+            }
             printf("Book \"%s\" has been successfully returned.\n", book_name);
             break;
         }
