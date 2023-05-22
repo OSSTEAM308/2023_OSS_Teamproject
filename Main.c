@@ -99,6 +99,13 @@ int main()
                 break;
         }
     }
+
+    for(int i=0;i<idx_book;i++)
+        free(book_data[i]);
+    
+    for(int i=0;i<idx_member;i++)
+        free(member_data[i]);
+        
     return 0;
 }
 
