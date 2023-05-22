@@ -7,7 +7,7 @@
 typedef struct {
     char name[100];
     unsigned int age;
-    char Loan[100];
+    char loan[100];
     int status;
 } Member;
 
