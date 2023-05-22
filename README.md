@@ -32,7 +32,9 @@
 - Repo Owner
 - WIKI 관리
 - 책 관련 c파일,헤더파일 구현
+- 컨밴션 확인
 
 변동현<br>
 - Contributer
 - main함수와 회원 관련 c파일,헤더파일 구현
+- 최종 프로그램 테스트
