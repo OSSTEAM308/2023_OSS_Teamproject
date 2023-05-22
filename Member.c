@@ -7,7 +7,7 @@
 
 void AddMember(Member **data_member)
  {
-    if (num_members >= MAX_MEMBERS) 
+    if (idx_member >= MAX_MEMBERS) 
     {
         printf("Maximum number of members reached.\n");
         return;
@@ -22,10 +22,10 @@ void AddMember(Member **data_member)
     
     printf("Enter member age: ");
     scanf("%u", &(new_member->age));
-    getchar(); // Consume newline character
+    getchar(); 
     
-    data_member[num_members] = new_member;
-    num_members++;
+    data_member[idx_member] = new_member;
+    idx_member++;
 
     printf("Member added successfully!\n");
 }
@@ -41,7 +41,7 @@ void SearchMember(Member **data_member)
 
     int found = 0;
 
-    for (int i = 0; i < num_members; i++) 
+    for (int i = 0; i < idx_member; i++) 
     {
         if(strstr(data_member[i]->name,search_name) && data_member[i]->status != -1)
         {
@@ -68,7 +68,7 @@ void DeleteMember(Member **data_member)
     delete_name[strcspn(delete_name, "\n")] = '\0';
     
     int found = 0;
-    for (int i = 0; i < num_members; i++)
+    for (int i = 0; i < idx_member; i++)
     {
         if (strcmp((data_member[i])->name, delete_name) == 0) 
         {
@@ -90,7 +90,7 @@ void DisplayMember(Member **data_member)
     printf("Name\t\tAge\t\tbooks on loan\n");
     printf("--------------------------------------------------------------\n");
     
-    for (int i = 0; i < num_members; i++) 
+    for (int i = 0; i < idx_member; i++) 
     {
         if(data_member[i]->status != -1)
             printf("%s\t\t%u\t\t%s\n", data_member[i]->name, data_member[i]->age,data_member[i]->loan);
@@ -108,7 +108,7 @@ void SaveMemberData(Member **data_member)
         return;
     }
     
-    for (int i = 0; i < num_members; i++) 
+    for (int i = 0; i < idx_member; i++) 
     {
         if(data_member[i]->status != -1)
         {

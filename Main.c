@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Member.h"
 #include "Book.h"
+#include "Member.h"
 
 #define MAX_MEMBERDATA 100
 #define MAX_BOOKDATA 100
@@ -15,10 +15,13 @@ int main()
     Book *book_data[MAX_BOOKDATA];
     Member *member_data [MAX_MEMBERDATA];
 
-    idx = LoadBook(book_data);
-    num_members = LoadMember(member_data);
-    if(idx > 0)
-        no = book_data[idx - 1]->no;
+    idx_book = LoadBook(book_data);
+    printf("\n\n%d Bookdata loaded\n", idx_book);
+    idx_member = LoadMember(member_data);
+    printf("%d Memberdata loaded\n", idx_member);
+
+    if(idx_book > 0)
+        no = book_data[idx_book - 1]->no;
 
     while (1) {
         printf("┌─────────────────────────────────────────┐\n");
@@ -104,10 +107,10 @@ int LoadBook(Book **book_data)
     FILE *file = fopen(BOOK_FILENAME, "r");
 
     int count = 0;
-      
     while (!feof(file))
     {
         book_data[count] = (Book *)malloc(sizeof(Book));
+
         fscanf(file, "%u %s %s %s %s %s",
                &book_data[count]->no,
                book_data[count]->title,
@@ -122,7 +125,6 @@ int LoadBook(Book **book_data)
         data_num++;
         count++;
     }
-
     fclose(file);
     return count;
 }
@@ -142,10 +144,9 @@ int LoadMember(Member **member_data)
               member_data[count]->loan);
 
         if(feof(file))
-                break;
+            break;
         count++;
     }
-
     fclose(file);
     return count;
 }

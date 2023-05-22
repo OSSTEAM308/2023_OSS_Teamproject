@@ -22,9 +22,8 @@ typedef struct
     int status;
 }Book;
 
-
 int data_num;
-int idx, no;
+int idx_book, no;
 
 void DisplayBook(Book ** data_book);
 void AddBook(Book ** data_book);

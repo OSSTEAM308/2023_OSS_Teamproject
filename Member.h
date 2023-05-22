@@ -11,7 +11,7 @@ typedef struct {
     int status;
 } Member;
 
-int num_members;
+int idx_member;
 
 void AddMember(Member **data_member);
 void SearchMember(Member **data_member);

@@ -7,14 +7,14 @@
 
 void DisplayBook(Book ** book_data)
 {  
-    printf("no    Title             author     publisher     end_date     name\n");
+    printf("no    Title             Author     Publisher     End_date     Title(loaned)\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
     if(data_num == 0)
             printf("no Data\n");
     else
     {
-        for(int i=0;i<=idx-1;i++)
+        for(int i=0;i<=idx_book-1;i++)
         {
             if(book_data[i]->status != -1)
             {
@@ -28,13 +28,13 @@ void DisplayBook(Book ** book_data)
  
 void AddBook(Book ** book_data)
 {
-    book_data[idx] = (Book *)malloc(sizeof(Book));
+    book_data[idx_book] = (Book *)malloc(sizeof(Book));
     getchar();
-    strcpy(book_data[idx]->name, "");
+    strcpy(book_data[idx_book]->name, "");
 
-    InputBook(book_data,idx);
-    book_data[idx]->no = ++no;
-    idx++;
+    InputBook(book_data,idx_book);
+    book_data[idx_book]->no = ++no;
+    idx_book++;
     data_num++;
 }
 
@@ -53,7 +53,7 @@ void DeleteBook(Book **book_data)
         return;
     }
 
-    for (int i = 0; i <= idx-1;i++)
+    for (int i = 0; i <= idx_book-1;i++)
     {
         if(book_data[i]->no == num && book_data[i]->status != -1)
         {
@@ -76,10 +76,10 @@ void SearchBook(Book **book_data)
     fgets(temp,sizeof(temp), stdin);
     temp[strlen(temp) - 1] = '\0';
    
-    printf("no    Title             author     publisher     end_date     name\n");
+    printf("no    Title             Author     Publisher     End_date     Title(loaned)\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
-    for (int i = 0; i <= idx-1;i++)
+    for (int i = 0; i <= idx_book-1;i++)
     {
         if(strstr(book_data[i]->title,temp) && book_data[i]->status != -1)
         {
@@ -108,18 +108,15 @@ void ModifyBook(Book ** book_data)
         return;
     }
     
-    for (int i = 0; i <= idx-1; i++)
+    for (int i = 0; i <= idx_book-1; i++)
     {
         if((book_data[i]->no == num) && (book_data[i]->status != -1))
         {
             flag++;
-            data_num--;
             InputBook(book_data, i);
             break;
         }
-       
     }
-
     if(flag == 0)
      printf("No data\n");
 }      
@@ -139,17 +136,18 @@ void InputBook(Book ** book_data,int index)
     book_data[index]->publisher[strlen(book_data[index]->publisher) - 1] = '\0';
 }
 
-void LoanBook(Book **data_book,Member **member_data) {
+void LoanBook(Book **data_book,Member **member_data) 
+{
     char book_name[LEN_TITLE];
     printf("Enter the book name: ");
     getchar();
     fgets(book_name, LEN_TITLE, stdin);
     book_name[strlen(book_name) - 1] = '\0';
 
-    
     int flag = 0;
-    int member_idx = -1;  // Index of the member in member_data array
-    for (int i = 0; i <= idx-1; i++) {
+    int member_idx = -1;  
+    for (int i = 0; i <= idx_book-1; i++)
+    {
         if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1) {
             flag = 1;
 
@@ -164,22 +162,21 @@ void LoanBook(Book **data_book,Member **member_data) {
             fgets(member_name, 100, stdin);
             member_name[strlen(member_name) - 1] = '\0';
             
-            // Check if the member exists in member_data array
-            for (int j = 0; j < num_members; j++) {
+            for (int j = 0; j < idx_member; j++) 
+            {
                 if (strcmp(member_data[j]->name, member_name) == 0) {
                     member_idx = j;
                     break;
                 }
             }
 
-            if (member_idx == -1) {
+            if (member_idx == -1) 
+            {
                 printf("Member \"%s\" does not exist. Unable to borrow the book.\n", member_name);
-                return;  // Exit the function
+                return;  
             }
 
             strcpy(member_data[member_idx]->loan,data_book[i]->title);
-            
-            // Update the book information with member's name
             strcpy(data_book[i]->name, member_data[member_idx]->name);
 
             time_t now = time(NULL);
@@ -191,12 +188,12 @@ void LoanBook(Book **data_book,Member **member_data) {
             break;
         }
     }
-
     if (flag == 0)
         printf("Book \"%s\" is not available for borrowing.\n", book_name);
 }
 
-void ReturnBook(Book **data_book,Member **member_data) {
+void ReturnBook(Book **data_book,Member **member_data)
+{
     char book_name[LEN_TITLE];
     printf("Enter the book name to return: ");
     getchar();
@@ -204,14 +201,17 @@ void ReturnBook(Book **data_book,Member **member_data) {
     book_name[strlen(book_name) - 1] = '\0';
 
     int flag = 0;
-    for (int i = 0; i <= idx-1; i++) {
+    for (int i = 0; i <= idx_book-1; i++) 
+    {
         if (strcmp(data_book[i]->title, book_name) == 0 && data_book[i]->status != -1 && strlen(data_book[i]->end_date) > 2) 
         {
             flag = 1;
-            data_book[i]->end_date[0] = '\0';  // Clear the end_date
+            data_book[i]->end_date[0] = '\0';  // Clear  end_date
             data_book[i]->name[0] = '\0';
-             for (int j = 0; j < num_members; j++) {
-                if (strcmp(member_data[j]->loan, book_name) == 0) {
+             for (int j = 0; j < idx_member; j++) 
+             {
+                if (strcmp(member_data[j]->loan, book_name) == 0) 
+                {
                     member_data[j]->loan[0] = '\0';
                     break;
                 }
@@ -220,7 +220,6 @@ void ReturnBook(Book **data_book,Member **member_data) {
             break;
         }
     }
-
     if (flag == 0)
         printf("Invalid input or book \"%s\" is not available for return.\n", book_name);
 }
@@ -235,7 +234,7 @@ void SaveBook(Book **data_book)
         return;
     }
 
-    for (int i = 0; i < idx; i++)
+    for (int i = 0; i < idx_book; i++)
     {
         if (data_book[i]->status != -1)
         {
