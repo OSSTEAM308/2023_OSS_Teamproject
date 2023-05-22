@@ -64,3 +64,5 @@ int LoadMember(Member **member_data);
 - Contributer
 - main함수와 회원 관련 c파일,헤더파일 구현
 - 최종 프로그램 테스트
+
+
