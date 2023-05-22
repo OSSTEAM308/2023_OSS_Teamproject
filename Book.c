@@ -7,7 +7,7 @@
 
 void DisplayBook(Book ** book_data)
 {  
-    printf("no    Title             Author     Publisher     End_date     Title(loaned)\n");
+    printf("no    Title             Author     Publisher     End_date     Name(loaned)\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
     if(data_num == 0)
@@ -76,7 +76,7 @@ void SearchBook(Book **book_data)
     fgets(temp,sizeof(temp), stdin);
     temp[strlen(temp) - 1] = '\0';
    
-    printf("no    Title             Author     Publisher     End_date     Title(loaned)\n");
+    printf("no    Title             Author     Publisher     End_date     Name(loaned)\n");
     printf("---------------------------------------------------------------------\n");
     int flag = 0;
     for (int i = 0; i <= idx_book-1;i++)
