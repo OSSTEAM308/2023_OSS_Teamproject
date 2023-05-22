@@ -23,6 +23,32 @@
 -회원 등록<br> 
 -회원 삭제<br> 
 
+### :pushpin: 프로그램 사용 함수<br>
+```
+// Book_function
+void DisplayBook(Book ** data_book);
+void AddBook(Book ** data_book);
+void DeleteBook(Book ** data_book);
+void ModifyBook(Book ** data_book);
+void SearchBook(Book ** data_book);
+void LoanBook(Book ** ,Member ** member_data);
+void ReturnBook(Book ** data_book,Member **member_data);
+void InputBook(Book **data_book, int index);
+void SaveBook(Book **data_book);
+
+// Member_function
+void AddMember(Member **data_member);
+void SearchMember(Member **data_member);
+void DeleteMember(Member **data_member);
+void DisplayMember(Member **data_member);
+void SaveBookData(Member **data_member);
+void SaveMemberData(Member **data_member); 
+
+// Load_function
+int LoadBook(Book **book_data);
+int LoadMember(Member **member_data);
+```
+
 ### :pushpin: 개발환경 및 언어<br>
 - git/github<br>
 - C / Visual Studio Code
